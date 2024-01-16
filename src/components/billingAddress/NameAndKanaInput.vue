@@ -19,8 +19,7 @@
     {{ buttonText }}
   </b-button>
 
-  <BotReply :message="botMessage" v-if="messageDisplay" />
-  <BotReply :message="botMessage1" v-if="messageDisplay" />
+  <BotReply :messages="botMessage" v-if="messageDisplay" />
 </template>
 
 <script setup>
@@ -30,16 +29,16 @@ import BotReply from "../BotReply.vue";
 const name = ref("");
 const kana = ref("");
 
-const botMessage = ref("");
-const botMessage1 = ref("");
+const botMessage = ref([]);
 
 const messageDisplay = ref(false);
-const buttonText = ref(" 次へ");
+const buttonText = ref("次へ");
 
 function reply() {
-  botMessage.value =
-    "お お様、この度は当社商品をお買い求めいただきありがとうございます！";
-  botMessage1.value = "ご住所を郵便番号からご入力ください。";
+  botMessage.value.push(
+    "お お様、この度は当社商品をお買い求めいただきありがとうございます！"
+  );
+  botMessage.value.push("ご住所を郵便番号からご入力ください。");
   messageDisplay.value = true;
 
   buttonText.value = "更新";

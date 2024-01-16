@@ -1,12 +1,14 @@
 <template>
-  <div class="bot-message">{{ message }}</div>
+  <div class="bot-message" v-for="(message, index) in messages" :key="index">
+    {{ message }}
+  </div>
 </template>
 
 <script setup>
 defineProps({
-  message: {
-    type: String,
-    default: () => "",
+  messages: {
+    type: Array,
+    default: () => [],
   },
 });
 </script>

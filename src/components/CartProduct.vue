@@ -35,15 +35,18 @@
         :disabled="!cart.quantity || !cart.productId"
         class="w-100"
         @click="onClick"
-        >次へ
+      >
+        {{ buttonText }}
       </b-button>
     </b-col>
   </b-row>
 
-  <BotReply />
+  <BotReply v-if="displayBot" :messages="messages" />
 </template>
 
 <script setup>
+import { ref } from "vue";
+
 import BotReply from "../components/BotReply.vue";
 
 import { useCartStore } from "../stores/cart";
@@ -68,7 +71,14 @@ const productOptions = [
   },
 ];
 
+const displayBot = ref(false);
+const messages = ref([]);
+const buttonText = ref("次へ");
+
 function onClick() {
-  console.log("click");
+  displayBot.value = true;
+  messages.value.push("test");
+
+  buttonText.value = "更新";
 }
 </script>
