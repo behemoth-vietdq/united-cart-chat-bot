@@ -5,6 +5,7 @@ export const useCartStore = defineStore("cart", () => {
   const cart = ref({
     productId: null,
     quantity: null,
+    paymentMethodCode: null,
   });
 
   return {
