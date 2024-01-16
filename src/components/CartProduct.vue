@@ -2,35 +2,50 @@
   <b-row>
     <b-col cols="3">
       <FormValidator name="product_id" label="Product">
-        <VSelect
+        <b-form-select
           class="w-100"
           v-model="cart.productId"
           :options="productOptions"
-          :reduce="(option) => option.value"
-        />
+        >
+          <template #first>
+            <option :value="null">選択してください</option>
+          </template>
+        </b-form-select>
       </FormValidator>
     </b-col>
 
     <b-col cols="3">
       <FormValidator name="quantity" label="Quantity">
-        <VSelect
+        <b-form-select
           class="w-100"
           v-model="cart.quantity"
           :options="quantityOption"
-        />
+        >
+          <template #first>
+            <option :value="null">選択してください</option>
+          </template>
+        </b-form-select>
       </FormValidator>
     </b-col>
   </b-row>
 
   <b-row class="mt-3">
     <b-col cols="6">
-      <b-button class="w-100" @click="onClick">Submit</b-button>
+      <b-button
+        :disabled="!cart.quantity || !cart.productId"
+        class="w-100"
+        @click="onClick"
+        >次へ
+      </b-button>
     </b-col>
   </b-row>
+
+  <BotReply />
 </template>
 
 <script setup>
-import { ref } from "vue";
+import BotReply from "../components/BotReply.vue";
+
 import { useCartStore } from "../stores/cart";
 import { storeToRefs } from "pinia";
 
@@ -40,15 +55,15 @@ const { cart } = storeToRefs(cartStore);
 const quantityOption = [1, 2, 3, 4, 5];
 const productOptions = [
   {
-    label: "Iphone 15",
+    text: "Iphone 15",
     value: 1,
   },
   {
-    label: "SamSung",
+    text: "SamSung",
     value: 2,
   },
   {
-    label: "Product 3",
+    text: "Product 3",
     value: 3,
   },
 ];
@@ -57,5 +72,3 @@ function onClick() {
   console.log("click");
 }
 </script>
-
-<style lang="scss" scoped></style>
