@@ -1,0 +1,29 @@
+.has-error {
+  .form-control,
+  .custom-select {
+    border-color: #f46a6a;
+
+    &::placeholder {
+      color: #f46a6a;
+    }
+  }
+
+  .validation {
+    width: 100%;
+    margin-top: 0.25rem;
+    font-size: 80%;
+    color: #f46a6a;
+  }
+}
+
+.full-flex {
+  display: flex;
+  flex: 1;
+}
+
+.bg-white {
+  background-color: #fff !important;
+}
+.no-wrap {
+  white-space: nowrap;
+}
