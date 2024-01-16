@@ -22,7 +22,8 @@
   >
     {{ buttonText }}
   </b-button>
-  <BotReply :message="messages" v-if="messageDisplay" />
+
+  <BotReply :messages="messages" v-if="messageDisplay" />
 </template>
 
 <script setup>
