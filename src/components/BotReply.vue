@@ -1,31 +1,23 @@
 <template>
-  {{ message }}
+  <div class="bot-message">{{ message }}</div>
 </template>
 
 <script setup>
-import { useCartStore } from "../stores/cart";
-import { storeToRefs } from "pinia";
-
-const cartStore = useCartStore();
-const { cart } = storeToRefs(cartStore);
-
-const quantityOption = [1, 2, 3, 4, 5];
-const productOptions = [
-  {
-    text: "Iphone 15",
-    value: 1,
+defineProps({
+  message: {
+    type: String,
+    default: () => "",
   },
-  {
-    text: "SamSung",
-    value: 2,
-  },
-  {
-    text: "Product 3",
-    value: 3,
-  },
-];
-
-function onClick() {
-  console.log("click");
-}
+});
 </script>
+
+<style scoped>
+.bot-message {
+  padding: 5px;
+  background-color: rgb(223, 55, 114);
+  color: white;
+  margin-top: 1px;
+  width: 50%;
+  border-radius: 10px;
+}
+</style>
