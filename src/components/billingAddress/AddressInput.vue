@@ -85,6 +85,8 @@ const messages = ref([]);
 const buttonText = ref("次へ");
 
 function onClick() {
+  if (messages.value.length) return;
+
   messages.value.push("test");
   displayBot.value = true;
 

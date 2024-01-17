@@ -24,6 +24,8 @@ const messageDisplay = ref(false);
 const buttonText = ref("次へ");
 
 function reply() {
+  if (botMessage.value.length) return;
+
   botMessage.value.push("続いて、お支払い方法をお選びください。");
   messageDisplay.value = true;
 

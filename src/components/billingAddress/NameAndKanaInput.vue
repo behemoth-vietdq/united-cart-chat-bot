@@ -35,6 +35,8 @@ const messageDisplay = ref(false);
 const buttonText = ref("次へ");
 
 function reply() {
+  if (botMessage.value.length) return;
+
   botMessage.value.push(
     "お お様、この度は当社商品をお買い求めいただきありがとうございます！"
   );

@@ -7,8 +7,8 @@
           placeholder="例）ハナコ"
           :options="paymentMethodOptions"
         >
-          <template #default #first>
-            <option :value="''">選択してください</option>
+          <template #first>
+            <option :value="null">選択してください</option>
           </template>
         </b-form-select>
       </FormValidator>
@@ -56,6 +56,8 @@ const messageDisplay = ref(false);
 const buttonText = ref("次へ");
 
 function reply() {
+  if (messages.value.length) return;
+
   messageDisplay.value = true;
   messages.value.push("input payment success");
 
