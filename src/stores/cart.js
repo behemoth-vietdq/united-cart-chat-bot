@@ -4,11 +4,21 @@ import { ref } from "vue";
 export const useCartStore = defineStore("cart", () => {
   const cart = ref({
     productId: null,
-    quantity: 1,
+    quantity: null,
+    paymentMethodCode: null,
   });
+  const step = ref(1);
+
+  function increaseStep() {
+    step.value++;
+  }
 
   return {
     // data
     cart,
+    step,
+
+    // function
+    increaseStep,
   };
 });

@@ -19,7 +19,7 @@
           :options="prefectureOptions"
         >
           <template #first>
-            <option :value="''">選択してください</option>
+            <option :value="null">選択してください</option>
           </template>
         </b-form-select>
       </FormValidator>
@@ -48,13 +48,23 @@
     </b-col>
   </FormValidator>
 
-  <b-button :disabled="addressInfo" class="w-50 mt-3"> 次へ </b-button>
+  <b-button :disabled="checkButtonDisable" class="w-50 mt-3" @click="onClick">
+    {{ buttonText }}
+  </b-button>
+
+  <BotReply v-if="displayBot" :messages="messages" />
 </template>
 
 <script setup>
 import { prefectures } from "jp-prefectures";
 
 import { ref, computed } from "vue";
+
+import BotReply from "@/components/BotReply.vue";
+
+import { useCartStore } from "@/stores/cart";
+
+const cartStore = useCartStore();
 
 const prefectureOptions = computed(() => {
   return prefectures().map((p) => ({
@@ -63,10 +73,28 @@ const prefectureOptions = computed(() => {
   }));
 });
 
+const checkButtonDisable = computed(() =>
+  Object.values(addressInfo.value).some((key) => !key)
+);
+
 const addressInfo = ref({
-  postcode: "",
-  address01: "",
-  address02: "",
-  perfecture: "",
+  postcode: null,
+  perfecture: null,
+  address01: null,
+  address02: null,
 });
+
+const displayBot = ref(false);
+const messages = ref([]);
+const buttonText = ref("次へ");
+
+function onClick() {
+  if (messages.value.length) return;
+
+  messages.value.push("test");
+  displayBot.value = true;
+
+  buttonText.value = "更新";
+  cartStore.increaseStep();
+}
 </script>

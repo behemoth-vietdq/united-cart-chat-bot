@@ -22,7 +22,7 @@
 <script>
 import { defineComponent, computed } from "vue";
 
-import { useGlobalStore } from "../../stores/global";
+import { useGlobalStore } from "@/stores/global";
 
 export default defineComponent({
   props: {
