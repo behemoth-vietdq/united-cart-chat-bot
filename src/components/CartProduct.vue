@@ -1,45 +1,37 @@
 <template>
-  <b-row>
-    <b-col cols="3">
-      <FormValidator name="product_id" label="Product">
-        <b-form-select
-          class="w-100"
-          v-model="cart.productId"
-          :options="productOptions"
-        >
-          <template #first>
-            <option :value="null">選択してください</option>
-          </template>
-        </b-form-select>
-      </FormValidator>
-    </b-col>
-
-    <b-col cols="3">
-      <FormValidator name="quantity" label="Quantity">
-        <b-form-select
-          class="w-100"
-          v-model="cart.quantity"
-          :options="quantityOption"
-        >
-          <template #first>
-            <option :value="null">選択してください</option>
-          </template>
-        </b-form-select>
-      </FormValidator>
-    </b-col>
-  </b-row>
-
-  <b-row class="mt-3">
-    <b-col cols="6">
-      <b-button
-        :disabled="!cart.quantity || !cart.productId"
+  <FormLayout>
+    <FormValidator name="product_id" label="商品" required>
+      <b-form-select
         class="w-100"
-        @click="onClick"
+        v-model="cart.productId"
+        :options="productOptions"
       >
-        {{ buttonText }}
-      </b-button>
-    </b-col>
-  </b-row>
+        <template #first>
+          <option :value="null">選択してください</option>
+        </template>
+      </b-form-select>
+    </FormValidator>
+
+    <FormValidator name="quantity" label="商品の個数" required>
+      <b-form-select
+        class="w-100"
+        v-model="cart.quantity"
+        :options="quantityOption"
+      >
+        <template #first>
+          <option :value="null">選択してください</option>
+        </template>
+      </b-form-select>
+    </FormValidator>
+
+    <b-button
+      :disabled="!cart.quantity || !cart.productId"
+      class="w-100 mt-3 btn"
+      @click="onClick"
+    >
+      {{ buttonText }}
+    </b-button>
+  </FormLayout>
 
   <BotReply v-if="displayBot" :messages="messages" />
 </template>
@@ -48,6 +40,7 @@
 import { ref } from "vue";
 
 import BotReply from "@/components/BotReply.vue";
+import FormLayout from "@/layouts/form.vue";
 
 import { useCartStore } from "@/stores/cart";
 import { storeToRefs } from "pinia";

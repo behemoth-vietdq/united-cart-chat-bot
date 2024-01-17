@@ -1,21 +1,21 @@
 <template>
-  <FormValidator label="お名前" required>
-    <b-col md="6">
-      <FormValidator>
-        <b-form-input v-model="tel" placeholder="例）0123456789" />
-      </FormValidator>
-    </b-col>
-  </FormValidator>
+  <FormLayout>
+    <FormValidator label="お名前" required>
+      <b-form-input v-model="tel" placeholder="例）0123456789" />
+    </FormValidator>
 
-  <b-button :disabled="!tel" class="w-50 mt-3" @click="reply()">
-    {{ buttonText }}
-  </b-button>
+    <b-button :disabled="!tel" class="w-100 mt-3 btn" @click="reply()">
+      {{ buttonText }}
+    </b-button>
+  </FormLayout>
+
   <BotReply :messages="botMessage" v-if="messageDisplay" />
 </template>
 
 <script setup>
 import { ref } from "vue";
 import BotReply from "@/components/BotReply.vue";
+import FormLayout from "@/layouts/form.vue";
 
 import { useCartStore } from "@/stores/cart";
 

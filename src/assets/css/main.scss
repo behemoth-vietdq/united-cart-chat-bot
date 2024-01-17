@@ -2,3 +2,17 @@
 @import "bootstrap-vue-next/dist/bootstrap-vue-next.css";
 
 @import "vue-select/dist/vue-select.css";
+
+
+.btn {
+  background-color: rgb(223, 55, 114);
+  border: none;
+  border-radius: 60px;
+}
+.btn:hover {
+  background-color: rgb(223, 55, 114, 0.8);
+}
+
+.btn:disabled {
+  background-color: rgb(223, 55, 114, 0.8);
+}

@@ -1,23 +1,21 @@
 <template>
-  <FormValidator label="お名前" required>
-    <b-col md="6">
-      <FormValidator>
-        <b-form-input v-model="name" placeholder="例）山田" />
-      </FormValidator>
-    </b-col>
-  </FormValidator>
+  <FormLayout>
+    <FormValidator label="お名前" required>
+      <b-form-input v-model="name" placeholder="例）山田" />
+    </FormValidator>
 
-  <FormValidator label="フリガナ" required v-if="name">
-    <b-col md="6">
-      <FormValidator>
-        <b-form-input v-model="kana" placeholder="例）ハナコ" />
-      </FormValidator>
-    </b-col>
-  </FormValidator>
+    <FormValidator label="フリガナ" required v-if="name">
+      <b-form-input v-model="kana" placeholder="例）ハナコ" />
+    </FormValidator>
 
-  <b-button :disabled="!name || !kana" class="w-50 mt-3" @click="reply()">
-    {{ buttonText }}
-  </b-button>
+    <b-button
+      :disabled="!name || !kana"
+      class="w-100 mt-3 btn"
+      @click="reply()"
+    >
+      {{ buttonText }}
+    </b-button>
+  </FormLayout>
 
   <BotReply :messages="botMessage" v-if="messageDisplay" />
 </template>
@@ -25,6 +23,7 @@
 <script setup>
 import { ref } from "vue";
 import BotReply from "@/components/BotReply.vue";
+import FormLayout from "@/layouts/form.vue";
 
 import { useCartStore } from "@/stores/cart";
 

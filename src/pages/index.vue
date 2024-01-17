@@ -1,7 +1,7 @@
 <template>
   <CartProduct />
-  <AddressInput v-if="step >= 2" />
-  <NameAndKanaInput v-if="step >= 3" />
+  <NameAndKanaInput v-if="step >= 2" />
+  <AddressInput v-if="step >= 3" />
   <TelInput v-if="step >= 4" />
   <CartPayment v-if="step >= 5" />
 </template>

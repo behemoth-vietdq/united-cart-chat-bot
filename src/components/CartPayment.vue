@@ -1,27 +1,25 @@
 <template>
-  <FormValidator label="お名前" required>
-    <b-col md="6">
-      <FormValidator>
-        <b-form-select
-          v-model="cart.paymentMethodCode"
-          placeholder="例）ハナコ"
-          :options="paymentMethodOptions"
-        >
-          <template #first>
-            <option :value="null">選択してください</option>
-          </template>
-        </b-form-select>
-      </FormValidator>
-    </b-col>
-  </FormValidator>
+  <FormLayout>
+    <FormValidator label="お名前" required>
+      <b-form-select
+        v-model="cart.paymentMethodCode"
+        placeholder="例）ハナコ"
+        :options="paymentMethodOptions"
+      >
+        <template #first>
+          <option :value="null">選択してください</option>
+        </template>
+      </b-form-select>
+    </FormValidator>
 
-  <b-button
-    :disabled="!cart.paymentMethodCode"
-    class="w-50 mt-3"
-    @click="reply()"
-  >
-    {{ buttonText }}
-  </b-button>
+    <b-button
+      :disabled="!cart.paymentMethodCode"
+      class="w-100 mt-3 btn"
+      @click="reply()"
+    >
+      {{ buttonText }}
+    </b-button>
+  </FormLayout>
 
   <BotReply :messages="messages" v-if="messageDisplay" />
 </template>
@@ -29,6 +27,7 @@
 <script setup>
 import { ref } from "vue";
 import BotReply from "@/components/BotReply.vue";
+import FormLayout from "@/layouts/form.vue";
 
 import { useCartStore } from "@/stores/cart";
 import { storeToRefs } from "pinia";
