@@ -47,9 +47,9 @@
 <script setup>
 import { ref } from "vue";
 
-import BotReply from "../components/BotReply.vue";
+import BotReply from "@/components/BotReply.vue";
 
-import { useCartStore } from "../stores/cart";
+import { useCartStore } from "@/stores/cart";
 import { storeToRefs } from "pinia";
 
 const cartStore = useCartStore();
@@ -82,5 +82,6 @@ function onClick() {
   messages.value.push("test");
 
   buttonText.value = "更新";
+  cartStore.increaseStep();
 }
 </script>

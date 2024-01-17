@@ -28,9 +28,9 @@
 
 <script setup>
 import { ref } from "vue";
-import BotReply from "./BotReply.vue";
+import BotReply from "@/components/BotReply.vue";
 
-import { useCartStore } from "../stores/cart";
+import { useCartStore } from "@/stores/cart";
 import { storeToRefs } from "pinia";
 
 const cartStore = useCartStore();
@@ -62,5 +62,6 @@ function reply() {
   messages.value.push("input payment success");
 
   buttonText.value = "更新";
+  cartStore.increaseStep();
 }
 </script>

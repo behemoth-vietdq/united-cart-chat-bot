@@ -7,9 +7,18 @@ export const useCartStore = defineStore("cart", () => {
     quantity: null,
     paymentMethodCode: null,
   });
+  const step = ref(1);
+
+  function increaseStep() {
+    step.value++;
+  }
 
   return {
     // data
     cart,
+    step,
+
+    // function
+    increaseStep,
   };
 });

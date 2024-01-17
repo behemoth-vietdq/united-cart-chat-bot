@@ -8,7 +8,7 @@ import { createApp, h } from "vue";
 
 // =============COMPONENTS SUPPORT=============
 import BootstrapVueNext from "bootstrap-vue-next";
-import FormValidator from "./components/shared/FormValidator.vue";
+import FormValidator from "@/components/shared/FormValidator.vue";
 import VueDatePicker from "@vuepic/vue-datepicker";
 
 import VueApexCharts from "vue3-apexcharts";

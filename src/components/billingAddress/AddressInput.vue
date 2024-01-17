@@ -60,7 +60,11 @@ import { prefectures } from "jp-prefectures";
 
 import { ref, computed } from "vue";
 
-import BotReply from "../BotReply.vue";
+import BotReply from "@/components/BotReply.vue";
+
+import { useCartStore } from "@/stores/cart";
+
+const cartStore = useCartStore();
 
 const prefectureOptions = computed(() => {
   return prefectures().map((p) => ({
@@ -91,5 +95,6 @@ function onClick() {
   displayBot.value = true;
 
   buttonText.value = "更新";
+  cartStore.increaseStep();
 }
 </script>

@@ -15,7 +15,11 @@
 
 <script setup>
 import { ref } from "vue";
-import BotReply from "../BotReply.vue";
+import BotReply from "@/components/BotReply.vue";
+
+import { useCartStore } from "@/stores/cart";
+
+const cartStore = useCartStore();
 
 const tel = ref("");
 
@@ -30,5 +34,6 @@ function reply() {
   messageDisplay.value = true;
 
   buttonText.value = "更新";
+  cartStore.increaseStep();
 }
 </script>
