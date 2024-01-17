@@ -6,6 +6,8 @@ export const useCartStore = defineStore("cart", () => {
     productId: null,
     quantity: null,
     paymentMethodCode: null,
+    shippingCarrierId: null,
+    termAccepted: null,
   });
   const step = ref(1);
 
