@@ -1,15 +1,18 @@
 <template>
   <FormLayout>
     <FormValidator label="お名前" required>
-      <b-form-input v-model="name" placeholder="例）山田" />
+      <b-form-input v-model="billingAddressData.name" placeholder="例）山田" />
     </FormValidator>
 
-    <FormValidator label="フリガナ" required v-if="name">
-      <b-form-input v-model="kana" placeholder="例）ハナコ" />
+    <FormValidator label="フリガナ" required v-if="billingAddressData.name">
+      <b-form-input
+        v-model="billingAddressData.kana"
+        placeholder="例）ハナコ"
+      />
     </FormValidator>
 
     <b-button
-      :disabled="!name || !kana"
+      :disabled="!billingAddressData.name || !billingAddressData.kana"
       class="w-100 mt-3 btn"
       @click="reply()"
     >
@@ -26,11 +29,12 @@ import BotReply from "@/components/BotReply.vue";
 import FormLayout from "@/layouts/form.vue";
 
 import { useCartStore } from "@/stores/cart";
+import { storeToRefs } from "pinia";
 
 const cartStore = useCartStore();
+const { cart } = storeToRefs(cartStore);
 
-const name = ref("");
-const kana = ref("");
+const billingAddressData = ref(cart.value.billingAddressData);
 
 const botMessage = ref([]);
 

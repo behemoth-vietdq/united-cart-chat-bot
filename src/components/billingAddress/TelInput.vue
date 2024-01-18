@@ -1,10 +1,17 @@
 <template>
   <FormLayout>
     <FormValidator label="お名前" required>
-      <b-form-input v-model="tel" placeholder="例）0123456789" />
+      <b-form-input
+        v-model="billingAddressData.tel"
+        placeholder="例）0123456789"
+      />
     </FormValidator>
 
-    <b-button :disabled="!tel" class="w-100 mt-3 btn" @click="reply()">
+    <b-button
+      :disabled="!billingAddressData.tel"
+      class="w-100 mt-3 btn"
+      @click="reply()"
+    >
       {{ buttonText }}
     </b-button>
   </FormLayout>
@@ -18,10 +25,12 @@ import BotReply from "@/components/BotReply.vue";
 import FormLayout from "@/layouts/form.vue";
 
 import { useCartStore } from "@/stores/cart";
+import { storeToRefs } from "pinia";
 
 const cartStore = useCartStore();
+const { cart } = storeToRefs(cartStore);
 
-const tel = ref("");
+const billingAddressData = ref(cart.value.billingAddressData);
 
 const botMessage = ref([]);
 const messageDisplay = ref(false);

@@ -1,12 +1,15 @@
 <template>
   <FormLayout>
     <FormValidator label="郵便番号" required>
-      <b-form-input v-model="addressInfo.postcode" placeholder="例）1234567" />
+      <b-form-input
+        v-model="billingAddressData.postcode"
+        placeholder="例）1234567"
+      />
     </FormValidator>
 
     <FormValidator label="都道府県" required>
       <b-form-select
-        v-model="addressInfo.perfecture"
+        v-model="billingAddressData.perfecture"
         placeholder="例）ハナコ"
         :options="prefectureOptions"
       >
@@ -18,14 +21,14 @@
 
     <FormValidator label="住所1（市郡区／町・村）" required>
       <b-form-input
-        v-model="addressInfo.address01"
+        v-model="billingAddressData.address01"
         placeholder="例）○○市△△区□町"
       />
     </FormValidator>
 
     <FormValidator label="住所2（丁目・番地・マンション名・号室" required>
       <b-form-input
-        v-model="addressInfo.address02"
+        v-model="billingAddressData.address02"
         placeholder="例）△△ 1-4 ○○マンション101号 "
       />
     </FormValidator>
@@ -51,8 +54,12 @@ import BotReply from "@/components/BotReply.vue";
 import FormLayout from "@/layouts/form.vue";
 
 import { useCartStore } from "@/stores/cart";
+import { storeToRefs } from "pinia";
 
 const cartStore = useCartStore();
+const { cart } = storeToRefs(cartStore);
+
+const billingAddressData = ref(cart.value.billingAddressData);
 
 const prefectureOptions = computed(() => {
   return prefectures().map((p) => ({
@@ -61,15 +68,14 @@ const prefectureOptions = computed(() => {
   }));
 });
 
-const checkButtonDisable = computed(() =>
-  Object.values(addressInfo.value).some((key) => !key)
-);
+const checkButtonDisable = computed(() => {
+  for (let key in billingAddressData.value) {
+    if (key === "tel") continue;
 
-const addressInfo = ref({
-  postcode: null,
-  perfecture: null,
-  address01: null,
-  address02: null,
+    if (!billingAddressData.value[key]) return true;
+  }
+
+  return false;
 });
 
 const displayBot = ref(false);

@@ -3,20 +3,29 @@ import { ref } from "vue";
 
 export const useCartStore = defineStore("cart", () => {
   const cart = ref({
-    productId: null,
-    quantity: null,
-    paymentMethodCode: null,
-    shippingCarrierId: null,
-    termAccepted: null,
+    productId: "1",
+    quantity: "1",
+    paymentMethodCode: "cod",
+    shippingCarrierId: "1",
+    termAccepted: false,
+    billingAddressData: {
+      postcode: "100-0001",
+      perfecture: "1",
+      address01: "お名前",
+      address02: "お名前",
+      name: "お",
+      kana: "オ",
+      tel: "1234567",
+    },
     shippingAddressData: {
       sameWithBillingAddress: true,
-      postcode: null,
-      perfecture: null,
-      address01: null,
-      address02: null,
-      name: null,
-      kana: null,
-      tel: null,
+      postcode: "100-0001",
+      perfecture: "1",
+      address01: "お名前",
+      address02: "お名前",
+      name: "お",
+      kana: "オ",
+      tel: "1234567",
     },
   });
   const step = ref(0);
