@@ -58,11 +58,16 @@ const buttonText = ref("次へ");
 function onClick() {
   if (messages.value.length) return;
 
-  displayBot.value = true;
   messages.value.push("Input Shipping Carrier Success");
-  messages.value.push("Now please confirm your purchase");
+  setTimeout(() => {
+    messages.value.push("Now please confirm your purchase");
+  }, 500);
+
+  displayBot.value = true;
 
   buttonText.value = "更新";
-  cartStore.increaseStep();
+  setTimeout(() => {
+    cartStore.increaseStep();
+  }, 1300);
 }
 </script>

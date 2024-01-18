@@ -8,8 +8,18 @@ export const useCartStore = defineStore("cart", () => {
     paymentMethodCode: null,
     shippingCarrierId: null,
     termAccepted: null,
+    shippingAddressData: {
+      sameWithBillingAddress: true,
+      postcode: null,
+      perfecture: null,
+      address01: null,
+      address02: null,
+      name: null,
+      kana: null,
+      tel: null,
+    },
   });
-  const step = ref(1);
+  const step = ref(0);
 
   function increaseStep() {
     step.value++;

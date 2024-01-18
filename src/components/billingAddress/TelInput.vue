@@ -34,6 +34,8 @@ function reply() {
   messageDisplay.value = true;
 
   buttonText.value = "更新";
-  cartStore.increaseStep();
+  setTimeout(() => {
+    cartStore.increaseStep();
+  }, 800);
 }
 </script>

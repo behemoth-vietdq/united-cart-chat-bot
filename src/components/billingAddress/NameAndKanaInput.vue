@@ -43,10 +43,15 @@ function reply() {
   botMessage.value.push(
     "お お様、この度は当社商品をお買い求めいただきありがとうございます！"
   );
-  botMessage.value.push("ご住所を郵便番号からご入力ください。");
+  setTimeout(() => {
+    botMessage.value.push("ご住所を郵便番号からご入力ください。");
+  }, 500);
+
   messageDisplay.value = true;
 
   buttonText.value = "更新";
-  cartStore.increaseStep();
+  setTimeout(() => {
+    cartStore.increaseStep();
+  }, 1300);
 }
 </script>

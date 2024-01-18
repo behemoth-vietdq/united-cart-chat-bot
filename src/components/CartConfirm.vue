@@ -49,7 +49,7 @@ function reply() {
   messageDisplay.value = true;
   messages.value.push("ご注文ありがとうございました。");
 
-  cartStore.increaseStep();
+  // cartStore.increaseStep();
 }
 </script>
 
