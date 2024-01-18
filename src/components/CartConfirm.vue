@@ -49,6 +49,10 @@ function reply() {
   messageDisplay.value = true;
   messages.value.push("ご注文ありがとうございました。");
 
+  window.parent.postMessage(
+    JSON.stringify(cart.value),
+    "http://localhost:3000"
+  );
   // cartStore.increaseStep();
 }
 </script>
