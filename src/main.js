@@ -17,6 +17,7 @@ import ElementPlus from "element-plus";
 import vSelect from "vue-select";
 
 import App from "./App.vue";
+import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 
 const pinia = createPinia();
 
@@ -33,6 +34,7 @@ app.use(ElementPlus);
 
 app.component("FormValidator", FormValidator);
 app.component("VSelect", vSelect);
+app.component("FontAwesomeIcon", FontAwesomeIcon);
 
 VueDatePicker.props.format.default = "dd/MM/yyyy";
 VueDatePicker.props.actionRow.default = {

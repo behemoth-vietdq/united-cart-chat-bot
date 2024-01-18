@@ -63,7 +63,6 @@
       </FormValidator>
     </div>
 
-    checkButtonDisable {{ checkButtonDisable }}
     <b-button
       :disabled="checkButtonDisable"
       class="w-100 mt-3 btn"

@@ -1,14 +1,16 @@
 <template>
-  <BotReply :messages="messages" />
+  <div class="mt-5">
+    <BotReply :messages="messages" />
 
-  <CartProduct v-if="step >= 1" />
-  <NameAndKanaInput v-if="step >= 2" />
-  <AddressInput v-if="step >= 3" />
-  <TelInput v-if="step >= 4" />
-  <CartShippingAddress v-if="step >= 5" />
-  <CartPayment v-if="step >= 6" />
-  <CartShippingCarrier v-if="step >= 7" />
-  <CartConfirm v-if="step >= 8" />
+    <CartProduct v-if="step >= 1" />
+    <NameAndKanaInput v-if="step >= 2" />
+    <AddressInput v-if="step >= 3" />
+    <TelInput v-if="step >= 4" />
+    <CartShippingAddress v-if="step >= 5" />
+    <CartPayment v-if="step >= 6" />
+    <CartShippingCarrier v-if="step >= 7" />
+    <CartConfirm v-if="step >= 8" />
+  </div>
 </template>
 
 <script setup>

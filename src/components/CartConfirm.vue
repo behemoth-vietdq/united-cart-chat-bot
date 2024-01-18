@@ -15,11 +15,12 @@
       <b-button
         size="lg"
         variant="success"
+        :disabled="!cart.termAccepted"
         type="submit"
         @click="reply()"
         name="submit"
         id="submit"
-        class="w-100 confirm-btn"
+        class="confirm-btn"
       >
         確認ページへ進む
       </b-button>
@@ -47,18 +48,44 @@ function reply() {
   if (messages.value.length) return;
 
   messageDisplay.value = true;
-  messages.value.push("ご注文ありがとうございました。");
+  messages.value.push("i'm oke i'm fai quìn cha nà");
 
   window.parent.postMessage(
     JSON.stringify(cart.value),
     "http://localhost:3000"
   );
-  // cartStore.increaseStep();
+  cartStore.increaseStep();
 }
 </script>
 
 <style scoped>
 .confirm-btn {
-  background-color: rgb(145, 232, 232);
+  width: 95%;
+  background-image: linear-gradient(
+    to right,
+    #dd5e89 0%,
+    #f7bb97 51%,
+    #dd5e89 100%
+  );
+  margin: 0 auto;
+  padding: 15px 45px;
+  text-align: center;
+  text-transform: uppercase;
+  transition: 0.5s;
+  background-size: 200% auto;
+  color: white;
+  box-shadow: 0 0 20px #eee;
+  border-radius: 60px;
+  display: block;
+}
+
+.confirm-btn:hover {
+  background-position: right center;
+  color: #fff;
+  text-decoration: none;
+}
+
+.confirm-btn:disabled {
+  opacity: 0.5;
 }
 </style>
